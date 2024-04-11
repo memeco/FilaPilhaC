@@ -23,11 +23,29 @@ typedef struct {
 };
 
 // Função para inicializar uma filas
-
+void initializeQueue(Queue *q) {
+    q->front = -1;
+    q->rear = -1;
+}
 
 // Função para verificar se a fila está vazia
+int isQueueEmpty(Queue *q) {
+    return (q->front == -1 && q->rear == -1);
+}
 
 // Função para enfileirar um livro
+void enqueue(Queue *q, Book book) {
+    if ((q->rear +1) % MAX_SIZE == q->front) {
+         printf("Queue is full.\n");
+         return;
+    } else if (isQueueEmpty(q)) {
+        q->front = 0;
+        q->rear = 0;
+    } else {
+        q->rear = (q->rear + 1) % MAX_SIZE;
+    }
+    q->items[q->rear] = book;
+}
 
 // Função para desenfileirar um livro
 
