@@ -118,6 +118,7 @@ int main() {
     while (!isQueueEmpty(&bookQueue)) {
         Book dequeuedBook = dequeue(&bookQueue);
         push(&bookStack, dequeuedBook);
+        printf("%s\n", dequeuedBook.title);
     }
 
     // Desempilhando os livros e exibindo seus títulos
